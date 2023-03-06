@@ -13,8 +13,8 @@ class Human:
     def default_info(self):
         return self.default_name, self.default_age
 
-    def __make_deal(self, house):
-        total_cost = house.final_price()
+    def __make_deal(self, house, discount = 0):
+        total_cost = house.final_price(discount)
         if total_cost > self.__money:
             print('Недостаточно средств для выполнения операции!')
         else:
@@ -31,23 +31,24 @@ class Human:
 
 
 class House:
-    def __init__(self, _area,_price):
-        self._area = _area
-        self._price = _price
+    def __init__(self, area,price):
+        self._area = area
+        self._price = price
 
-    def final_price(self, discount=0):
+    def final_price(self, discount):
         return self._price - self._price /100 * discount
 
 
 class SmallHouse(House):
-    def __init__(self, _price, _area=40):
-        super().__init__(_area, _price)
+    default_area = 40
+    def __init__(self, price):
+        super().__init__(SmallHouse.default_area, price)
         self._area = 40
 
 
 
 nikola = Human(name='Nikola', age=40)
-dom = SmallHouse(_price=100)
+dom = SmallHouse(price=100)
 
 nikola.earn_money(500)
 nikola.buy_house(dom)
