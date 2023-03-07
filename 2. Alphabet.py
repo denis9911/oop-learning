@@ -13,7 +13,7 @@ class Alphabet:
 
 class EngAlphabet(Alphabet):
     def __init__(self, language, letters, letters_num):
-        super.__init__(language, letters)
+        super().__init__(language, letters)
         self.__letters_num = letters_num
 
     def is_en_letter(self, letter):
@@ -21,6 +21,14 @@ class EngAlphabet(Alphabet):
 
     def letters_num(self):
         return self.__letters_num
+
     @staticmethod
-    def example(self):
+    def example():
         print('London is the capital of Great Britan')
+
+en = EngAlphabet('En', string.ascii_uppercase, len(string.ascii_uppercase))
+print(en.letters)
+print(en.letters_num())
+en.is_en_letter('F')
+en.is_en_letter('Щ')
+en.example()
